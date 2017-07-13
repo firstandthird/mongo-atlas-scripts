@@ -4,12 +4,12 @@ source $(dirname $0)/prompt.sh
 
 prompt "Replica" "" "REPLICA"
 prompt "Servers" "" "SERVERS"
-prompt "User" "" "USER"
+prompt "Login" "" "LOGIN"
 prompt "Password" "" "PASSWORD"
 prompt "Database" "" "DATABASE"
 
 docker run -it --rm \
   -v "$PWD:/src" \
   mongo:latest \
-  sh -c "mongodump -h $REPLICA/$SERVERS -u $USER -p $PASSWORD -d $DATABASE --ssl --authenticationDatabase admin -o /src"
+  sh -c "mongodump -h $REPLICA/$SERVERS -u $LOGIN -p $PASSWORD -d $DATABASE --ssl --authenticationDatabase admin -o /src"
 
